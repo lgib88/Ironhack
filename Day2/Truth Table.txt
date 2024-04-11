@@ -1,0 +1,17 @@
+Relational operators
+
+Relational operators are symbols used to compare two values ​​or expressions. The result of the evaluation with these two operators can be True, if the comparison is true, or False, if the comparison is false.
+
+== Equal to a == b
+!= Not equal to a != b
+> Greater than a > b
+< Lesser than a < b
+>= Greater than or equal to a >= b
+<= Less than or equal to a <= b
+
+Note the difference between a single equals sign (=), which is an assignment, and a double equals sign (==), which is a relational operator
+
+Truth Taable:
+
+- Or: Any of he conditions to be fulfilled
+- And: Every condition to be fulfilled.
