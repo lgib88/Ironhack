@@ -1,0 +1,75 @@
+Columns needed: [Date (Month, Year), Location, Region, Shark Spieces, Hour of Attack]
+
+- What are the global hotspots for shark attacks?
+
+# Group the data by location and count the number of attacks
+hotspots = df.groupby('Location')['Attack'].count()
+
+# Sort the counts in descending order
+hotspots = hotspots.sort_values(ascending=False)
+
+print(hotspots)
+
+
+- Is there a seasonal pattern to shark attacks in different regions?
+
+# Convert the date to a datetime object and extract the month
+df['Date'] = pd.to_datetime(df['Date'])
+df['Month'] = df['Date'].dt.month
+
+# Group the data by region and month, and count the number of attacks
+seasonal_pattern = df.groupby(['Region', 'Month'])['Attack'].count().reset_index()
+
+# Plot the number of attacks for each month in each region
+for region in seasonal_pattern['Region'].unique():
+    plt.plot(seasonal_pattern[seasonal_pattern['Region'] == region]['Month'],
+             seasonal_pattern[seasonal_pattern['Region'] == region]['Attack'])
+    plt.title(f'Seasonal Pattern of Shark Attacks in {region}')
+    plt.xlabel('Month')
+    plt.ylabel('Number of Attacks')
+    plt.show()
+
+
+- Are certain species of sharks more likely to attack in specific geographical areas?
+
+# Group the data by species and location, and count the number of attacks
+species_attacks = df.groupby(['Species', 'Location'])['Attack'].count()
+
+# Sort the counts in descending order
+species_attacks = species_attacks.sort_values(ascending=False)
+
+print(species_attacks)
+
+
+- How has the frequency and location of shark attacks changed over time?
+
+# Convert the date to a datetime object and extract the year
+df['Date'] = pd.to_datetime(df['Date'])
+df['Year'] = df['Date'].dt.year
+
+# Group the data by year and location, and count the number of attacks
+attacks_over_time = df.groupby(['Year', 'Location'])['Attack'].count().reset_index()
+
+# Plot the number of attacks for each year in each location
+for location in attacks_over_time['Location'].unique():
+    plt.plot(attacks_over_time[attacks_over_time['Location'] == location]['Year'],
+             attacks_over_time[attacks_over_time['Location'] == location]['Attack'])
+    plt.title(f'Number of Shark Attacks Over Time in {location}')
+    plt.xlabel('Year')
+    plt.ylabel('Number of Attacks')
+    plt.show()
+
+- At what time you are more likely to receive a shark attack?
+
+# Convert the time to a datetime object and extract the hour
+df['Time'] = pd.to_datetime(df['Time']).dt.hour
+
+# Group the data by hour, and count the number of attacks
+attacks_by_hour = df.groupby('Time')['Attack'].count()
+
+# Plot the number of attacks for each hour
+attacks_by_hour.plot(kind='bar')
+plt.title('Number of Shark Attacks by Hour of Day')
+plt.xlabel('Hour of Day')
+plt.ylabel('Number of Attacks')
+plt.show()

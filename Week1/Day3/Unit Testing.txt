@@ -1,0 +1,9 @@
+he assert statement adds controls for debugging a program. It allows us to express a condition that must always be true, and that, if not, will interrupt the program, generating an exception to handle called AssertionError.
+
+#AssertionError: 250 != 300
+
+assert #MAKE SURE THIS IS THIS
+
+assert 10 == 10, "sdsd"
+
+assert 10 == 11, "Not equal"

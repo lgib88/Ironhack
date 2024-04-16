@@ -1,0 +1,54 @@
+- How is the game's structure organized?
+
+The code is organized in a straightforward manner. Here's a breakdown:
+
+game_state = INIT_GAME_STATE.copy()
+
+This line creates a copy of the INIT_GAME_STATE dictionary (or other mutable data structure) and assigns it to game_state. This is done to avoid modifying the original INIT_GAME_STATE when changes are made to game_state during the game. The copy() method creates a new dictionary that's a shallow copy of the original.
+
+start_game()
+
+This line calls the start_game function, which presumably starts the game. The details of what this function does would be inside the function's definition, which is not shown in the provided code snippet. Typically, a function like this would initialize the game, perhaps setting up the game board, placing players at their starting positions, etc.
+
+The code is organized in a procedural style, with a sequence of operations performed in order. It first sets up the game state, then starts the game.
+
+
+- Which functions do you have and how are they imported?
+
+There are six functions defined:
+
+linebreak(): prints two newline characters, effectively creating a line break in the console output.
+
+start_game(): prints a starting message and begins the game by calling play_room() with the current room from the game state.
+
+play_room(room): takes a room as an argument and handles the logic for that room. It checks if the room is the target room and lets the player explore or examine items in that room
+
+explore_room(room): Takes a room as an argument and lists all items in that room.
+
+get_next_room_of_door(door, current_room): Takes a door and the current room as arguments, and returns the room that the door leads to.
+
+examine_item(item_name): Takes an item name as an argument and handles the logic for examining an item. It checks if the item is in the current room, checks if the item is a door or contains keys, and updates the game state accordingly.
+
+
+- What was the most important technical challenge you faced?
+
+Object interactions: The game needs to handle interactions between different objects. For example, if the player uses a key on a door, the game needs to check if the key matches the door and, if so, unlock the door.
+
+- How did you overcome that challenge?
+
+Define clear relationships: In your code, you've defined object_relations which clearly outlines how different objects are related. This is a good practice as it allows you to easily manage and understand the relationships between different objects.
+
+Use consistent data structures: Consistency in how you represent different objects in your game (like using dictionaries for rooms, doors, keys, etc.) can make it easier to manage these objects and their interactions.
+
+Testing: Make sure to thoroughly test the interactions between different objects in your game. This can help you catch and fix any issues early on.
+
+
+- What was the biggest mistake you made during this project?
+
+Attempting to define all the objects and their relationships from the very beginning, without conducting any preliminary testing. As we began to implement the game logic, we encountered an elusive error and we were unable to locate the source of this error within our objects and relationships. This led to a significant setback, as we ultimately decided to restart the project from scratch.
+
+- What did you learn from it?
+
+We learnt the importance of incremental development and testing. Rather than trying to build everything at once, it's more effective to add and test each component one by one. This approach allows us to isolate and resolve issues more easily as they arise, rather than having to sift through a large amount of code to find the problem.
+
+

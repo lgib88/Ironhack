@@ -1,0 +1,7 @@
+flag(temp variable true/false)
+	while flag
+		if ansewe not correct
+			continue
+		else
+			flag = false
+		
